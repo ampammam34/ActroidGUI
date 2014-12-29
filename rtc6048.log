@@ -1,0 +1,13 @@
+2014-12-29 16:42:00,194 manager INFO 1.1.0
+2014-12-29 16:42:00,194 manager INFO Copyright (C) 2003-2010
+2014-12-29 16:42:00,194 manager INFO   Noriaki Ando
+2014-12-29 16:42:00,194 manager INFO   Intelligent Systems Research Institute, AIST
+2014-12-29 16:42:00,194 manager INFO Manager starting.
+2014-12-29 16:42:00,194 manager INFO Starting local logging.
+2014-12-29 16:42:00,207 manager.namingmanager INFO NameServer connection succeeded: corba/localhost
+2014-12-29 16:42:02,204 ManagerServant INFO Master manager not found
+2014-12-29 16:42:02,206 manager ERROR Traceback (most recent call last):
+  File "C:\Python26\lib\site-packages\OpenRTM_aist\Manager.py", line 1751, in initManagerServant
+    reffile = file(self._config.getProperty("manager.refstring_path"),'w')
+IOError: [Errno 2] No such file or directory: '/var/log/rtcmanager.ref'
+

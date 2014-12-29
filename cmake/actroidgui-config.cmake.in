@@ -1,0 +1,54 @@
+# ActroidGUI CMake config file
+#
+# This file sets the following variables:
+# ActroidGUI_FOUND - Always TRUE.
+# ActroidGUI_INCLUDE_DIRS - Directories containing the ActroidGUI include files.
+# ActroidGUI_IDL_DIRS - Directories containing the ActroidGUI IDL files.
+# ActroidGUI_LIBRARIES - Libraries needed to use ActroidGUI.
+# ActroidGUI_DEFINITIONS - Compiler flags for ActroidGUI.
+# ActroidGUI_VERSION - The version of ActroidGUI found.
+# ActroidGUI_VERSION_MAJOR - The major version of ActroidGUI found.
+# ActroidGUI_VERSION_MINOR - The minor version of ActroidGUI found.
+# ActroidGUI_VERSION_REVISION - The revision version of ActroidGUI found.
+# ActroidGUI_VERSION_CANDIDATE - The candidate version of ActroidGUI found.
+
+message(STATUS "Found ActroidGUI-@PROJECT_VERSION@")
+set(ActroidGUI_FOUND TRUE)
+
+find_package(<dependency> REQUIRED)
+
+#set(ActroidGUI_INCLUDE_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@"
+#    ${<dependency>_INCLUDE_DIRS}
+#    )
+#
+#set(ActroidGUI_IDL_DIRS
+#    "@CMAKE_INSTALL_PREFIX@/include/@PROJECT_NAME_LOWER@-@PROJECT_VERSION_MAJOR@/idl")
+set(ActroidGUI_INCLUDE_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@"
+    ${<dependency>_INCLUDE_DIRS}
+    )
+set(ActroidGUI_IDL_DIRS
+    "@CMAKE_INSTALL_PREFIX@/include/@CPACK_PACKAGE_FILE_NAME@/idl")
+
+
+if(WIN32)
+    set(ActroidGUI_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_STATIC_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+else(WIN32)
+    set(ActroidGUI_LIBRARIES
+        "@CMAKE_INSTALL_PREFIX@/@LIB_INSTALL_DIR@/@CMAKE_SHARED_LIBRARY_PREFIX@@PROJECT_NAME_LOWER@@CMAKE_SHARED_LIBRARY_SUFFIX@"
+        ${<dependency>_LIBRARIES}
+        )
+endif(WIN32)
+
+set(ActroidGUI_DEFINITIONS ${<dependency>_DEFINITIONS})
+
+set(ActroidGUI_VERSION @PROJECT_VERSION@)
+set(ActroidGUI_VERSION_MAJOR @PROJECT_VERSION_MAJOR@)
+set(ActroidGUI_VERSION_MINOR @PROJECT_VERSION_MINOR@)
+set(ActroidGUI_VERSION_REVISION @PROJECT_VERSION_REVISION@)
+set(ActroidGUI_VERSION_CANDIDATE @PROJECT_VERSION_CANDIDATE@)
+

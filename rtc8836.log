@@ -1,0 +1,7 @@
+2014-12-29 16:43:18,928 manager INFO 1.1.0
+2014-12-29 16:43:18,928 manager INFO Copyright (C) 2003-2010
+2014-12-29 16:43:18,928 manager INFO   Noriaki Ando
+2014-12-29 16:43:18,928 manager INFO   Intelligent Systems Research Institute, AIST
+2014-12-29 16:43:18,930 manager INFO Manager starting.
+2014-12-29 16:43:18,930 manager INFO Starting local logging.
+2014-12-29 16:43:18,934 manager.namingmanager INFO NameServer connection succeeded: corba/localhost
