@@ -199,6 +199,41 @@ class ActroidGUI(OpenRTM_aist.DataFlowComponentBase):
 		#
 		#
 	def onExecute(self, ec_id):
+                #print 'onExecute start'
+                data_array = []
+                data_array2 = []
+                try:
+                        global frames
+                        n = 0
+                        x = 0.0174 #532925 #[deg]にこの値をかけたら[rad]に変換できる
+                        
+                        for num in range(0, 13):
+                                value = frames[num].getvalue()
+                                data_array.append(value*x) #[deg]から[rad]に変換
+                        self._d_target_jointangles.data = data_array #これは文字列(ここで*xしたらlengthがx倍されるだけ)
+                        print self._d_target_jointangles
+                        self._target_jointanglesOut.write()
+                
+                        if self._current_jointanglesIn.isNew():
+                                indata = self._current_jointanglesIn.read()
+                                print self._current_jointangles
+                                print "Receive %d datas" % len(indata.data)
+                                for v in indata.data:
+                                        #print "Data is %d" % (v)
+                                        frames[n].setvalue(v)
+                                        n +=1
+
+                                #for n in range(0, 24):
+                                #        frames[n].setvalue(frames[n].getvalue())
+
+                        return RTC.RTC_OK
+                
+                except Exception, e:
+                        print 'Exception : ', e
+                        pass
+	
+		return RTC.RTC_OK
+                
 	
 		return RTC.RTC_OK
 	
@@ -295,10 +330,10 @@ def main():
 	mgr.runManager()
 
         global frames
-        root, frames = testFrame.GUI
+        root, frames = testFrame.GUI()
 
-        #for num in range(0, 24):
-        #        print "scale value is ", str(frames[num].getvalue())
+        for num in range(0, 13):
+                print "scale value is ", str(frames[num].getvalue())
         
 	root.mainloop()
 
