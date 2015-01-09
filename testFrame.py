@@ -139,7 +139,14 @@ class RadioButtonFrame(tk.Frame):
                 radio1.grid(row=0,column=0)
                 radio2 = tk.Radiobutton(self, text = 'Slider Input', variable = self.action, value = 1)
                 radio2.grid(row=1,column=0)
-
+        #def change_state():
+        #        if flag.get():
+        #                new_state = 'nomal'
+        #        else:
+        #                new_state = 'disabled'
+        #        for r in radios:
+        #                r.configure(state = new_state)
+        #ここでラジオによって、入力部分と出力部分を変えたいと考えているがやり方わからず。。
 
 class GUI:
         def __init__(self):

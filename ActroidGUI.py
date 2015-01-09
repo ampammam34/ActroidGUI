@@ -207,7 +207,7 @@ class ActroidGUI(OpenRTM_aist.DataFlowComponentBase):
                         n = 0
                         x = 0.0174 #532925 #[deg]にこの値をかけたら[rad]に変換できる
                         
-                        for num in range(0, 13):
+                        for num in range(7, 22):
                                 value = frames[num].getvalue()
                                 data_array.append(value*x) #[deg]から[rad]に変換
                         self._d_target_jointangles.data = data_array #これは文字列(ここで*xしたらlengthがx倍されるだけ)
@@ -330,7 +330,7 @@ def main():
 	mgr.runManager()
 
         global frames
-        root, frames = testFrame.GUI()
+        root, frames = testFrame.GUI.__init__(self)
 
         for num in range(0, 13):
                 print "scale value is ", str(frames[num].getvalue())
