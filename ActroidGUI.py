@@ -207,7 +207,7 @@ class ActroidGUI(OpenRTM_aist.DataFlowComponentBase):
                         n = 0
                         x = 0.0174 #532925 #[deg]にこの値をかけたら[rad]に変換できる
                         
-                        for num in range(7, 22):
+                        for num in range(0, 14):
                                 value = frames[num].getvalue()
                                 data_array.append(value*x) #[deg]から[rad]に変換
                         self._d_target_jointangles.data = data_array #これは文字列(ここで*xしたらlengthがx倍されるだけ)
